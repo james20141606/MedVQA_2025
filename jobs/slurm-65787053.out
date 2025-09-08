@@ -1,0 +1,76 @@
+[Info] Loading Thyme model and processor...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  25%|██▌       | 1/4 [00:05<00:16,  5.65s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:11<00:11,  5.57s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:16<00:05,  5.46s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:18<00:00,  4.07s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:18<00:00,  4.61s/it]
+The image processor of type `Qwen2VLImageProcessor` is now loaded as a fast processor by default, even if the model checkpoint was saved with a slow processor. This is a breaking change and may produce slightly different outputs. To continue using the slow processor, instantiate this class with `use_fast=False`. Note that this behavior will be extended to all models in a future release.
+Traceback (most recent call last):
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/connection.py", line 199, in _new_conn
+    sock = connection.create_connection(
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    raise err
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network is unreachable
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/connection.py", line 693, in connect
+    self.sock = sock = self._new_conn()
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/connection.py", line 214, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPSConnection object at 0x150381276e30>: Failed to establish a new connection: [Errno 101] Network is unreachable
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/xc1490/.local/lib/python3.10/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+  File "/home/xc1490/.local/lib/python3.10/site-packages/urllib3/util/retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/Kwai-Keye/Thyme-RL/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x150381276e30>: Failed to establish a new connection: [Errno 101] Network is unreachable'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/xc1490/projects/medvqa_2025/Thyme/test_thyme_grounding.py", line 263, in <module>
+    main()
+  File "/scratch/xc1490/projects/medvqa_2025/Thyme/test_thyme_grounding.py", line 167, in main
+    model, processor = load_model(args.model_path, args.device_map)
+  File "/scratch/xc1490/projects/medvqa_2025/Thyme/test_thyme_grounding.py", line 53, in load_model
+    processor = AutoProcessor.from_pretrained(model_path)
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/transformers/models/auto/processing_auto.py", line 385, in from_pretrained
+    return processor_class.from_pretrained(
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/transformers/processing_utils.py", line 1310, in from_pretrained
+    args = cls._get_arguments_from_pretrained(pretrained_model_name_or_path, **kwargs)
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/transformers/processing_utils.py", line 1369, in _get_arguments_from_pretrained
+    args.append(attribute_class.from_pretrained(pretrained_model_name_or_path, **kwargs))
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 1956, in from_pretrained
+    for template in list_repo_templates(
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/transformers/utils/hub.py", line 167, in list_repo_templates
+    return [
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/transformers/utils/hub.py", line 167, in <listcomp>
+    return [
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/huggingface_hub/hf_api.py", line 3177, in list_repo_tree
+    for path_info in paginate(path=tree_url, headers=headers, params={"recursive": recursive, "expand": expand}):
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/huggingface_hub/utils/_pagination.py", line 36, in paginate
+    r = session.get(path, params=params, headers=headers)
+  File "/home/xc1490/.local/lib/python3.10/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+  File "/home/xc1490/.local/lib/python3.10/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/home/xc1490/.local/lib/python3.10/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+  File "/ext3/miniconda3/envs/Thyme/lib/python3.10/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+  File "/home/xc1490/.local/lib/python3.10/site-packages/requests/adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/Kwai-Keye/Thyme-RL/tree/main/additional_chat_templates?recursive=False&expand=False (Caused by NewConnectionError('<urllib3.connection.HTTPSConnection object at 0x150381276e30>: Failed to establish a new connection: [Errno 101] Network is unreachable'))"), '(Request ID: c1d4af31-2c04-4d98-9362-962b023b00f0)')

@@ -1,0 +1,61 @@
+/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/models/auto/image_processing_auto.py:625: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+  warnings.warn(
+[Warning] Failed to load from local cache: Can't load image processor for '/scratch/xc1490/models/Janus-Pro-7B'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure '/scratch/xc1490/models/Janus-Pro-7B' is the correct path to a directory containing a preprocessor_config.json file
+[Info] Trying to load from network...
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/utils/hub.py", line 470, in cached_files
+    hf_hub_download(
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch/xc1490/models/Janus-Pro-7B'. Use `repo_type` argument if needed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/image_processing_base.py", line 338, in get_image_processor_dict
+    resolved_image_processor_file = cached_file(
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/utils/hub.py", line 312, in cached_file
+    file = cached_files(path_or_repo_id=path_or_repo_id, filenames=[filename], **kwargs)
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/utils/hub.py", line 522, in cached_files
+    resolved_files = [
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/utils/hub.py", line 523, in <listcomp>
+    _get_cache_file_to_return(path_or_repo_id, filename, cache_dir, revision) for filename in full_filenames
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/utils/hub.py", line 140, in _get_cache_file_to_return
+    resolved_file = try_to_load_from_cache(path_or_repo_id, full_filename, cache_dir=cache_dir, revision=revision)
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+    validate_repo_id(arg_value)
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+    raise HFValidationError(
+huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/scratch/xc1490/models/Janus-Pro-7B'. Use `repo_type` argument if needed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/models/auto/image_processing_auto.py", line 467, in from_pretrained
+    config_dict, _ = ImageProcessingMixin.get_image_processor_dict(
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/image_processing_base.py", line 357, in get_image_processor_dict
+    raise OSError(
+OSError: Can't load image processor for '/scratch/xc1490/models/Janus-Pro-7B'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure '/scratch/xc1490/models/Janus-Pro-7B' is the correct path to a directory containing a config.json file
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/xc1490/xc1490/projects/medvqa_2025/bin/test_janus_grounding.py", line 259, in <module>
+    main()
+  File "/home/xc1490/xc1490/projects/medvqa_2025/bin/test_janus_grounding.py", line 163, in main
+    model, processor, tokenizer = load_model_and_processor(args.model_path, args.offline)
+  File "/home/xc1490/xc1490/projects/medvqa_2025/bin/test_janus_grounding.py", line 38, in load_model_and_processor
+    processor = VLChatProcessor.from_pretrained(model_path)
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/processing_utils.py", line 1306, in from_pretrained
+    args = cls._get_arguments_from_pretrained(pretrained_model_name_or_path, **kwargs)
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/processing_utils.py", line 1365, in _get_arguments_from_pretrained
+    args.append(attribute_class.from_pretrained(pretrained_model_name_or_path, **kwargs))
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/models/auto/image_processing_auto.py", line 471, in from_pretrained
+    raise initial_exception
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/models/auto/image_processing_auto.py", line 458, in from_pretrained
+    config_dict, _ = ImageProcessingMixin.get_image_processor_dict(
+  File "/ext3/miniconda3/envs/janus/lib/python3.9/site-packages/transformers/image_processing_base.py", line 357, in get_image_processor_dict
+    raise OSError(
+OSError: Can't load image processor for '/scratch/xc1490/models/Janus-Pro-7B'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure '/scratch/xc1490/models/Janus-Pro-7B' is the correct path to a directory containing a preprocessor_config.json file
